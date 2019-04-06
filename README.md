@@ -8,7 +8,7 @@ This repository contains my source code for the first FSND assessable project.
 
 PostgreSQL and Python are required.
 
-* Clone the repository and `cd` into it;
+* Clone the repository and `cd` into the **src** directory;
 * Create a Python 3.6.7 virtual environment: `virtualenv env`;
 * In PostgreSQL and using PSQL:
   * Create a database **news**: `create database news;`,
@@ -20,5 +20,9 @@ PostgreSQL and Python are required.
 * Create a file **password** and enter **newsuser** password in it (this file is excluded from source control);
 * Activate the Python virtual environment: `source env/bin/activate`;
 * Install dependencies: `pip install -r requirements.txt`;
-* Run the main script via the terminal: `python main.py`.
+* Run the main script via the terminal: `python main.py` or `main.py` (ensure that [main.py](https://github.com/yottaawesome/fsnd-project-1/blob/master/src/main.py) is executable if using the latter command: `chmod +x main.py`).
 * Follow the prompts.
+
+## How this project is structured
+
+All source code is located in the src directory, and the main script is `main.py`. The SQL queries used by the script are located in the src/sql directory. `newsdb.py` is a supporting data access module.
