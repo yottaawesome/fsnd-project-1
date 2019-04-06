@@ -1,64 +1,72 @@
+'''Supporting module that connect to the news database'''
 import psycopg2
 
 with open('password') as f:
-    password = f.read()
+    PASSWORD = f.read()
 with open('./sql/most-popular-articles.sql') as f:
-    top_articles_sql = f.read()
+    TOP_ARTICLES_SQL = f.read()
 with open('./sql/most-popular-authors.sql') as f:
-    top_authors_sql = f.read()
+    TOP_AUTHORS_SQL = f.read()
 with open('./sql/most-errors-by-day.sql') as f:
-    top_error_days_sql = f.read()
+    TOP_ERRORS_SQL = f.read()
 
 class NewsDB:
+    '''This is a helper class for easily accessing the new DB'''
 
-    def top_articles(self):
+    @staticmethod
+    def top_articles():
+        '''Retrieves and prints the top 3 articles of all time'''
+
         try:
-
-            conn = psycopg2.connect(dbname='news', user='newsuser', password=password)
+            conn = psycopg2.connect(dbname='news', user='newsuser', password=PASSWORD)
             cursor = conn.cursor()
-            cursor.execute(top_articles_sql)
+            cursor.execute(TOP_ARTICLES_SQL)
             results = cursor.fetchall()
             print('')
             print('-------------------------------------------------------------')
             print('The top 3 articles of all time are:')
-            for r in results:
-                print('{} -- {} views'.format(r[0], r[1]))
+            for res in results:
+                print('{} -- {} views'.format(res[0], res[1]))
             print('-------------------------------------------------------------')
             print('')
 
         finally:
             conn.close()
 
-    def top_authors(self):
-        try:
+    @staticmethod
+    def top_authors():
+        '''Retrieves the most viewed authors in descending order of views'''
 
-            conn = psycopg2.connect(dbname='news', user='newsuser', password=password)
+        try:
+            conn = psycopg2.connect(dbname='news', user='newsuser', password=PASSWORD)
             cursor = conn.cursor()
-            cursor.execute(top_authors_sql)
+            cursor.execute(TOP_AUTHORS_SQL)
             results = cursor.fetchall()
             print('')
             print('-------------------------------------------------------------')
             print('The most popular article authors of all time are:')
-            for r in results:
-                print('{} -- {} views'.format(r[0], r[1]))
+            for res in results:
+                print('{} -- {} views'.format(res[0], res[1]))
             print('-------------------------------------------------------------')
             print('')
 
         finally:
             conn.close()
 
-    def top_error_days(self):
-        try:
+    @staticmethod
+    def top_error_days():
+        '''Displays the days where error requests are >1% of requests on those day'''
 
-            conn = psycopg2.connect(dbname='news', user='newsuser', password=password)
+        try:
+            conn = psycopg2.connect(dbname='news', user='newsuser', password=PASSWORD)
             cursor = conn.cursor()
-            cursor.execute(top_error_days_sql)
+            cursor.execute(TOP_ERRORS_SQL)
             results = cursor.fetchall()
             print('')
             print('-------------------------------------------------------------')
             print('The days where error requests amounted to more than 1% of requests:')
-            for r in results:
-                print('{} -- {}%'.format(r[0], r[3]))
+            for res in results:
+                print('{} -- {}%'.format(res[0], res[3]))
             print('-------------------------------------------------------------')
             print('')
 
