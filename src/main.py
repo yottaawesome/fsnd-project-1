@@ -1,32 +1,34 @@
-import psycopg2
+from newsdb import NewsDB
 
-with open('password') as f:
-    password = f.read()
+def print_options():
+    print('Enter one of the following options:')
+    print('1: view most popular articles')
+    print('2: view the most popular authors')
+    print('3: view the days where failed requests amounted to more than 1% of the requests on that day')
+    print('r: review options again')
+    print('q: quit')
 
-conn = psycopg2.connect(dbname='news', user='newsuser', password=password)
-
-conn.close()
+db = NewsDB()
+selection = ''
 
 print('Welcome!')
-print('Enter one of the following options:')
-print('1: view most popular articles')
-print('2: view the most popular authors')
-print('3: view the days where failed requests amounted to more than 1% of the requests on that day')
-print('q: quit')
+print_options()
 
-selection = ''
 while selection != 'q':
-    selection = input('Enter your selection ')
+    selection = input('Enter your selection: ')
     
-    if selection == 1:
-        pass
+    if selection == '1':
+        db.top_articles()
     
-    elif selection == 2:
-        pass
+    elif selection == '2':
+        db.top_authors()
     
-    elif selection == 3:
-        pass
+    elif selection == '3':
+        db.top_error_days()
     
+    elif selection == 'r':
+        print_options()
+
     elif selection == 'q':
         print('Bye!')
 

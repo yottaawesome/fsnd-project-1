@@ -1,5 +1,4 @@
-select 
-	l.path, 
+select  
 	art.title, 
 	count(*) as article_count 
 from 

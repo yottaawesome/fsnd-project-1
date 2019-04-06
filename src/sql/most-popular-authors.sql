@@ -1,5 +1,4 @@
-select 
-	art.title, 
+select
 	aut.name, 
 	count(*) as article_count 
 from 
@@ -9,7 +8,6 @@ inner join
 inner join 
 	authors aut on art.author = aut.id
 group by 
-	art.title, 
 	aut.name
 order by 
 	article_count desc;

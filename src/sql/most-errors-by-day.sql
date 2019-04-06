@@ -1,5 +1,5 @@
 select 
-	errors.date, 
+	to_char(errors.date, 'Mon DD, YYYY'), 
 	errors.total_errors, 
 	totals.total_requests, 
 	round((cast(errors.total_errors as decimal)/totals.total_requests) * 100, 5) as error_rate

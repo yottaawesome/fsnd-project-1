@@ -1,0 +1,2 @@
+psycopg2==2.8
+pylint==2.3.1
