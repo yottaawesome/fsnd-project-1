@@ -1,0 +1,99 @@
+select substring(path,9) from log limit 10;
+
+select * from articles limit 10;
+
+select path, count(*) as article_count from log group by path order by article_count desc
+
+-- most popular articles
+select 
+	l.path, 
+	art.title, 
+	count(*) as article_count 
+from 
+	log l
+inner join 
+	articles art on substring(l.path,10) = art.slug
+group by 
+	path, art.title
+order by 
+	article_count desc
+limit 3;
+
+-- most popular authors
+select 
+	art.title, 
+	aut.name, 
+	count(*) as article_count 
+from 
+	log l
+inner join 
+	articles art on substring(l.path,10) = art.slug
+inner join 
+	authors aut on art.author = aut.id
+group by 
+	art.title, 
+	aut.name
+order by 
+	article_count desc;
+
+select aut.name, count(*) as article_count 
+from log l
+inner join articles art on substring(l.path,10) = art.slug
+inner join authors aut on art.author = aut.id
+group by aut.name
+order by article_count desc;
+------
+
+-- error rate by day
+select 
+	errors.date, 
+	errors.total_errors, 
+	totals.total_requests, 
+	round((cast(errors.total_errors as decimal)/totals.total_requests) * 100, 5) as error_rate
+from 
+(
+	select 
+		date_trunc('day', time) as date, 
+		count(*) as total_errors
+	from 
+		log
+	where 
+		status <> '200 OK'
+	group by date
+	order by date
+) as errors
+inner join 
+(
+	select 
+		date_trunc('day', time) as date, 
+		count(*) as total_requests
+	from 
+		log
+	group by date
+	order by date
+) as totals on errors.date = totals.date
+where 
+	round((cast(errors.total_errors as decimal)/totals.total_requests) * 100, 5) > 1
+
+-- total by day
+select date_trunc('day', time) as date, count(*) 
+from log
+group by date
+order by date
+
+select date_trunc('day', time) as date, count(*) as c
+from log 
+where status <> '200 OK'
+group by date
+order by c desc;
+
+
+
+
+select * from log where time >= '2016-07-17' and time < '2016-07-18' and status <> '200 OK';
+
+
+
+select 
+	distinct date_trunc('day', time) as date
+		from log
