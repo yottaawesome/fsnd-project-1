@@ -6,7 +6,7 @@ This repository contains my source code for the first FSND assessable project.
 
 ## How to set it up
 
-PostgreSQL and Python are required.
+PostgreSQL and Python (including **Pip** and **virtualenv**) are required.
 
 * Clone the repository and `cd` into the **src** directory;
 * Create a Python 3.6.7 virtual environment: `virtualenv env`;
@@ -25,4 +25,4 @@ PostgreSQL and Python are required.
 
 ## How this project is structured
 
-All source code is located in the src directory, and the main script is `main.py`. The SQL queries used by the script are located in the src/sql directory. `newsdb.py` is a supporting data access module.
+All source code is located in the src directory, and the main script is `main.py`. The SQL queries used by the script are located in the src/sql directory. `newsdb.py` is a supporting data access module. In keeping with Python best practises, project dependencies are isolated into their own environment via **virtualenv**. The requirements file is [requirements.txt](https://github.com/yottaawesome/fsnd-project-1/blob/master/src/requirements.txt).
