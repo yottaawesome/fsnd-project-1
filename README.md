@@ -17,7 +17,7 @@ PostgreSQL and Python (including **Pip** and **virtualenv**) are required.
     * `grant all privileges on database news to newsuser;`
     * `grant all privileges on all tables in schema public to newsuser;`
     * `grant all privileges on all functions in schema public to newsuser;`
-* Create a file **password** and enter **newsuser** password in it (this file is excluded from source control);
+* Create a single-line file titled **password** and enter the password for **newsuser** in it (ensure there are no new lines in this file, as this can cause authentication failures when connecting to the database);
 * Activate the Python virtual environment: `source env/bin/activate`;
 * Install dependencies: `pip install -r requirements.txt`;
 * Run the main script via the terminal: `python main.py` or `main.py` (ensure that [main.py](https://github.com/yottaawesome/fsnd-project-1/blob/master/src/main.py) is executable if using the latter command: `chmod +x main.py`).
