@@ -40,7 +40,7 @@ How you go about satisfying these requirements depends on what UNIX environment 
 
 ### Using Udacity's Vagrant VM
 
-Getting set up on Udacity's Vagrant VM does not require creating the "news" database, the user "newsuser", or creating a password file. However, the VM has neither psycopg2 installed for Python 3 nor virtualenv; instructions for fullfilling these requirements are provided as part of the instructions below.
+Getting set up on Udacity's Vagrant VM does not require creating the "news" database, the user "newsuser", or creating a password file. However, the VM does not have virtualenv; instructions for fullfilling this requirement is provided as part of the instructions below.
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1) for your platform. You must use VirtualBox 5.1, as newer versions do not work with Vagrant.
 2. Install [Vagrant](https://www.vagrantup.com/downloads.html) appropriately for your platform.
@@ -49,10 +49,10 @@ Getting set up on Udacity's Vagrant VM does not require creating the "news" data
     1. `cd` into the `vagrant` directory in the repository you cloned in the previous step.
     2. Run `vagrant up`. This will set up the VM, but it will take quite a while to do so.
     3. Run `vagrant ssh` to SSH into the VM once it's set up.
-    4. Install virtualenv: `sudo apt install virtualenv`.
-    5. Install libpq-dev (required by psycopg2 for Python 3 for client-side development): `sudo apt install libpq-dev`.
+    4. Copy the newsdata.sql script into your Vagrant shared directory and run it with `psql -d news -f vagrant/newsdata.sql`.
+    5. Install virtualenv: `sudo apt install virtualenv`.
     6. Clone this repository and `cd` into the `src` directory.
-    7. Create a Python 3 virtual environment: `virtualenv env`.
+    7. Create a Python 3 virtual environment: `virtualenv -p python3 env`.
     8. Activate the Python virtual environment: `source env/bin/activate`.
     9. Install dependencies: `pip install -r requirements.txt`.
     10. Run the main script via the terminal: `python main.py` or `main.py` (ensure that [main.py](https://github.com/yottaawesome/fsnd-project-1/blob/master/src/main.py) is executable if using the latter command: `chmod +x main.py`).
