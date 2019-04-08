@@ -12,7 +12,7 @@ This project is written with Python 3 in mind. It is untested in Python 2.
 
 ## How this project is structured
 
-This is a small project and all source code of interest is located in the src directory. The main Python script is `main.py` with `newsdb.py` being a supporting data access module. The SQL queries used to analyze the database are located in the src/sql directory. In keeping with Python best practises, project dependencies are isolated into their own environment via `virtualenv`.
+This is a small project and all source code of interest is in the src directory. The main Python script is `main.py` with `newsdb.py` being a supporting data access module. The SQL queries used to analyze the database are located in the src/sql directory. In keeping with Python best practises, project dependencies are isolated into their own environment via `virtualenv`.
 
 ## Setting up
 
@@ -20,7 +20,7 @@ You can either set this project up using your own UNIX-like environment, by usin
 
 ### Using your own environment
 
-If you're using your own UNIX-like environmnent, you'll need to satisfy the following prerequisites in order to run this project.
+If you're using your own UNIX-like environment, you'll need to satisfy the following prerequisites in order to run this project.
 
 * Python 3
 * Pip
