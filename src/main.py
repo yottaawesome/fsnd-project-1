@@ -1,10 +1,10 @@
 #!./env/bin/python3
-'''The main module'''
+'''The main module.'''
 
-from newsdb import NewsDB
+from newsdb import top_articles, top_authors, top_error_days
 
 def print_options():
-    '''Prints all available input options'''
+    '''Prints all available input options.'''
 
     print('Enter one of the following options:')
     print('1: view most popular articles')
@@ -14,9 +14,8 @@ def print_options():
     print('q: quit')
 
 def main():
-    '''The core input loop of this script'''
+    '''The core input loop of this script.'''
 
-    news_db = NewsDB()
     selection = None
 
     print('Welcome!')
@@ -26,13 +25,13 @@ def main():
         selection = input('Enter your selection: ')
 
         if selection == '1':
-            news_db.top_articles()
+            top_articles()
 
         elif selection == '2':
-            news_db.top_authors()
+            top_authors()
 
         elif selection == '3':
-            news_db.top_error_days()
+            top_error_days()
 
         elif selection == 'r':
             print_options()
