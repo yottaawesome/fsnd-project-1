@@ -26,7 +26,7 @@ If you're using your own UNIX-like environment, you'll need to satisfy the follo
 * Pip
 * virtualenv
 * Git
-* The `newsdata.sql` script supplied by Udacity. A tarball version is available in `src/sql`, or you can [download it](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
+* The `newsdata.sql` script supplied by Udacity. [Download it](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 
 How you go about satisfying these requirements depends on what UNIX environment you're using. Some distributions already come with Python 3 and Pip installed, while others come with none of the above tools. Consult your platform's package manager for determining how to best satisfy these requirements.
 
