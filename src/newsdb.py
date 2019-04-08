@@ -10,22 +10,28 @@ with open('./sql/most-popular-authors.sql') as f:
 with open('./sql/most-errors-by-day.sql') as f:
     _TOP_ERRORS_SQL = f.read()
 
+
 def _exec_sql(sql: str):
     '''Internal to newsdb. Executes the inputted SQL string.'''
 
     try:
-        conn = psycopg2.connect(dbname='news', user='newsuser', password=_PASSWORD)
+        conn = psycopg2.connect(
+            dbname='news',
+            user='newsuser',
+            password=_PASSWORD)
         cursor = conn.cursor()
         cursor.execute(sql)
         return cursor.fetchall()
 
-    except Exception as ex:
+    except psycopg2.Error as e:
         print('An error occurred connecting to the database.')
-        print(ex)
+        print(e.pgerror)
+        print(e.diag.message_detail)
         return None
 
     finally:
         conn.close()
+
 
 def _print_results(header, results, print_func):
     '''Internal to newsdb. Formats and prints the results.'''
@@ -41,6 +47,7 @@ def _print_results(header, results, print_func):
         print('-------------------------------------------------------------')
         print('')
 
+
 def top_articles():
     '''Retrieves and prints the top 3 articles of all time.'''
 
@@ -48,6 +55,7 @@ def top_articles():
         'The top 3 articles of all time are:',
         _exec_sql(_TOP_ARTICLES_SQL),
         lambda res: print('{} -- {} views'.format(res[0], res[1])))
+
 
 def top_authors():
     '''Retrieves the most viewed authors in descending order of views.'''
@@ -57,8 +65,9 @@ def top_authors():
         _exec_sql(_TOP_AUTHORS_SQL),
         lambda res: print('{} -- {} views'.format(res[0], res[1])))
 
+
 def top_error_days():
-    '''Displays the days where error requests are >1% of requests on those day.'''
+    '''Displays days where error requests are >1% of requests on those day.'''
 
     _print_results(
         'The days where error requests amounted to more than 1% of requests:',
