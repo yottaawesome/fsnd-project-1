@@ -1,8 +1,12 @@
 '''Supporting module that connect to the news database.'''
 import psycopg2
+from pathlib import Path
 
-with open('password') as f:
-    _PASSWORD = f.read()
+_PASSWORD = None
+pwdfile = Path('password')
+if pwdfile.is_file():
+    with open('password') as f:
+        _PASSWORD = f.read()
 with open('./sql/most-popular-articles.sql') as f:
     _TOP_ARTICLES_SQL = f.read()
 with open('./sql/most-popular-authors.sql') as f:
@@ -15,10 +19,13 @@ def _exec_sql(sql: str):
     '''Internal to newsdb. Executes the inputted SQL string.'''
 
     try:
-        conn = psycopg2.connect(
-            dbname='news',
-            user='newsuser',
-            password=_PASSWORD)
+        if _PASSWORD:
+            conn = psycopg2.connect(
+                dbname='news',
+                user='newsuser',
+                password=_PASSWORD)
+        else:
+            conn = psycopg2.connect(dbname='news')
         cursor = conn.cursor()
         cursor.execute(sql)
         return cursor.fetchall()

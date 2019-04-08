@@ -10,8 +10,8 @@ def print_options():
     print('Enter one of the following options:')
     print('1: view most popular articles')
     print('2: view the most popular authors')
-    print('3: view the days where failed requests amounted to more than 1% of \
-        requests on that day')
+    print('3: view the days where failed requests amounted to more than 1% ' \
+        'of requests on that day')
     print('r: review options again')
     print('q: quit')
 
