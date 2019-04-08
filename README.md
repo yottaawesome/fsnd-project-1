@@ -18,7 +18,7 @@ This is a small project and all source code of interest is located in the src di
 
 You can either set this project up using your own UNIX-like environment, by using Udacity's preconfigured Vagrant/VirtualBox VM.
 
-### Using your own evironment
+### Using your own environment
 
 If you're using your own UNIX-like environmnent, you'll need to satisfy the following prerequisites in order to run this project.
 
