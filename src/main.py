@@ -45,5 +45,5 @@ def main():
         else:
             print('Invalid input {}'.format(selection))
 
-
-main()
+if __name__ == '__main__':
+    main()
