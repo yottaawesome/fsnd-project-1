@@ -10,6 +10,9 @@ This is project one of the Udacity Full Stack Nanodegree: a terminal-based inter
 
 This project is written with Python 3 in mind. It is untested in Python 2.
 
+## Status
+_Complete._
+
 ## How this project is structured
 
 This is a small project and all source code of interest is in the src directory. The main Python script is `main.py` with `newsdb.py` being a supporting data access module. The SQL queries used to analyze the database are located in the src/sql directory. In keeping with Python best practises, project dependencies are isolated into their own environment via `virtualenv`.
