@@ -11,7 +11,7 @@ This is project one of the Udacity Full Stack Nanodegree: a terminal-based inter
 This project is written with Python 3 in mind. It is untested in Python 2.
 
 ## Status
-_Complete._
+_Complete. Successfully graded._
 
 ## How this project is structured
 
